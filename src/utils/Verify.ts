@@ -26,7 +26,7 @@ export const generateNewTokens = (refreshToken:string, id:string, res:Response) 
   let newAccessToken
   let newRefreshToken 
   if(!process.env.REFRESH_TOKEN_SECRET_KEY) return
-  jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET_KEY, (err, user) => {
+  jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET_KEY, (err: jwt.VerifyErrors | null, user: string | jwt.JwtPayload | undefined) => {
     if(err) {
       return res.status(400).json({msg: "invalid refresh token"})
     }
