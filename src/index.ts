@@ -21,4 +21,4 @@ const options: cors.CorsOptions = {
 app.use(cors.default(options))
 app.use(router)
 
-app.listen(5000, ()=> console.log("server listening at port 5000"))
+app.listen(process.env.PORT, ()=> console.log("server listening at port ??"))
