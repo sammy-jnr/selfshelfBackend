@@ -2,9 +2,8 @@
   "name": "selfshelf-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
-    "build": "npm install && tsc",
     "start": "node dist/index.js"
   },
   "keywords": [],
