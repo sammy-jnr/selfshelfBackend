@@ -155,7 +155,7 @@ router.post("/registerGoogle", async(req, res)=>{
       const refreshToken = generateRefreshToken(id)
 
       res.json({
-        username: userData.given_name,
+        username,
         email: userData.email,
         accessToken,
         refreshToken,
@@ -179,11 +179,11 @@ router.post("/loginGoogle", async(req,res) => {
     if(!existingUser){
       return res.status(400).json({msg: "user not found"})
     }
-    const { id,books, categories } = existingUser
+    const { id,books, categories, username } = existingUser
     const accessToken = generateAccessToken(id)
     const refreshToken = generateRefreshToken(id)
     res.json({
-      username: userData.given_name,
+      username,
       email: userData.email,
       accessToken,
       refreshToken,
