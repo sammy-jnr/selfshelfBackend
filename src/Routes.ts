@@ -213,10 +213,14 @@ router.post("/newAccessToken", async(req,res) => {
   try {
     const user = await User.findOne({email})
     if(!user)return
+    const { books, categories, username } = user
     const tokens = generateNewTokens(refreshToken, user.id, res)
     res.json({
       accessToken: tokens?.newAccessToken,
-      refreshToken: tokens?.newRefreshToken
+      refreshToken: tokens?.newRefreshToken,
+      books,
+      categories,
+      username
     })
   } catch (error) {
     res.status(500).send("An error occurred")
